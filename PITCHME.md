@@ -131,3 +131,25 @@ FLASK_APP=hello.py flask run
 ```
 
 Go check [http://localhost:5000](http://localhost:5000) ;-)
+
+---
+
+### How it works?
+
+Let's have a deeper look at `docker-compose.yml`:
+
+```
+build: .
+volumes:
+  - .:/app
+ports:
+  - "5000:5000"
+```
+
+And `Dockerfile`:
+
+```
+FROM python:latest
+```
+
+And `docker-enter` = `docker-compose run --rm --service-ports app /bin/bash`
