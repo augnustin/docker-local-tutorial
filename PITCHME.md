@@ -1,7 +1,7 @@
 # Use Docker for your local environment
 
 Workshop by [Augustin Riedinger](https://augustin-riedinger.fr)
-(![Twitter](/images/twitter.png): [@augnustin](https://twitter.com/Augnustin))
+(![Twitter](images/twitter.png): [@augnustin](https://twitter.com/Augnustin))
 
 At [Capitole du Libre](https://2017.capitoledulibre.org) 19th November 2017
 
@@ -31,7 +31,7 @@ If so, you are free to go. :-)
 
 Most of the time, you will work on `project X` which requires Ruby 2+, Rails 5.1, Node 8+ and PostgreSQL 8.1 along with `project Y` which doesn't work without Node 10 and PostgreSQL 9.3 and sometimes get back on your 3.2 Ruby-on-Rails `Z project`.
 
-![Technology dependencies struggle](/images/confused.jpg)
+![Technology dependencies struggle](images/confused.jpg)
 
 ### Solutions
 
