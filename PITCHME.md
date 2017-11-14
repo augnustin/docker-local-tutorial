@@ -71,7 +71,7 @@ How would you do that without docker?
 
 ---
 
-### With Docker, only 2 new files
+### With Docker, 2 extra files
 
 - `Dockerfile`
 
@@ -93,7 +93,7 @@ Now type `docker-enter`...
 
 ---
 
-### Inside the `Docker`
+### Inside the Matrix
 
 ![You are inside](pitchme/images/docker-matrix.jpg)
 
@@ -130,3 +130,5 @@ And setup:
 pip install Flask
 FLASK_APP=hello.py flask run
 ```
+
+Go check [http://localhost:5000](http://localhost:5000) ;-)
