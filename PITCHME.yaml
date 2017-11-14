@@ -1,2 +1,5 @@
 # theme : moon
 # logo : images/logo-big.png
+highlight : monokai
+theme-override : /css/theme-override.css
+

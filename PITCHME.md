@@ -13,9 +13,12 @@ To attend this workshop, you need to have the following installed:
 - [Docker](https://docs.docker.com/engine/installation/)
 - [Docker-compose](https://github.com/docker/compose/releases)
 - Aliases (we'll detail them later):
-  - `alias docker-enter="docker-compose run --rm --service-ports app /bin/bash"`
-  - `alias docker-enter-again="docker-compose run --rm app /bin/bash"`
-  - `alias docker-clean="docker ps -a | grep 'Exited\|Created' | cut -d ' ' -f 1 | xargs docker rm"`
+
+```
+alias docker-enter="docker-compose run --rm --service-ports app /bin/bash"
+alias docker-enter-again="docker-compose run --rm app /bin/bash"
+alias docker-clean="docker ps -a | grep 'Exited\|Created' | cut -d ' ' -f 1 | xargs docker rm"
+```
 
 ---
 
@@ -31,16 +34,22 @@ Most of the time, you will work on `project X` which requires Ruby 2+, Rails 5.1
 
 ### Solutions
 
-RVM, NVM, GVM tools ?
+#### RVM, NVM, GVM tools?
 
 - add complexities
 - doesn't exist for every technology (eg. Postgres, Mongo)
 - local environment takes longer to setup
 - messes your machine
 
+#### Virtualbox, Vagrant?
+
+- heavy in resources **AND** memory
+
 Now we have **DOCKER**!!
 
 ---
 
 ### What is Docker?
+
+You've probably heard of it. It's fashion now!
 
