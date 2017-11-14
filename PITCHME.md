@@ -1,6 +1,7 @@
 # Use Docker for your local environment
 
-Workshop by [Augustin Riedinger](https://augustin-riedinger.fr) (twitter [@augnustin](https://twitter.com/Augnustin))
+Workshop by [Augustin Riedinger](https://augustin-riedinger.fr)
+Twitter: [@augnustin](https://twitter.com/Augnustin)
 
 At [Capitole du Libre](https://2017.capitoledulibre.org) 19th November 2017
 
