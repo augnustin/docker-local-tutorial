@@ -1,7 +1,7 @@
 # Use Docker for your local environment
 
 Workshop by [Augustin Riedinger](https://augustin-riedinger.fr)
-(![Twitter](images/twitter.png): [@augnustin](https://twitter.com/Augnustin))
+(![Twitter](pitchme/images/twitter.png): [@augnustin](https://twitter.com/Augnustin))
 
 At [Capitole du Libre](https://2017.capitoledulibre.org) 19th November 2017
 
@@ -54,7 +54,7 @@ Now we have **DOCKER**!!
 
 You've probably heard of it. It's fashion now!
 
-![Docker vs VM](images/docker-vs-vm.png)
+![Docker vs VM](pitchme/images/docker-vs-vm.png)
 
 To keep it simple:
 
