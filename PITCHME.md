@@ -110,10 +110,9 @@ What do you want to do?
 
 ### Back to our app
 
-Flask's [getting started](http://flask.pocoo.org) says:
+Flask's [getting started](http://flask.pocoo.org) says to create `hello.py`:
 
 ```python
-# hello.py
 from flask import Flask
 app = Flask(__name__)
 
@@ -124,7 +123,7 @@ def hello():
 app.run(host='0.0.0.0')
 ```
 
-And setup:
+And to setup in the terminal:
 
 ```
 pip install Flask

@@ -1,5 +1,5 @@
-# theme : moon
-# logo : images/logo-big.png
+theme : beige
+logo : images/logo.png
 highlight : monokai
 theme-override : /css/theme-override.css
 
