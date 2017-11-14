@@ -39,7 +39,7 @@ Most of the time, you will work on `project X` which requires Ruby 2+, Rails 5.1
 
 #### RVM, NVM, GVM tools?
 
-- add complexities
+- adds complexities
 - doesn't exist for every technology (eg. Postgres, Mongo)
 - local environment takes longer to setup
 - messes your machine
@@ -52,7 +52,42 @@ Now we have **DOCKER**!!
 
 ---
 
-### What is Docker?
+## What is Docker?
 
 You've probably heard of it. It's fashion now!
 
+![Docker vs VM](images/docker-vs-vm.png)
+
+To keep it simple:
+
++ reuses the OS core functionnalities
++ but isolates from other applications
+
+---
+
+## Let's start an app
+
+Let's make a simple Python [Flask](http://flask.pocoo.org) Hello World app.
+
+How would you do that without docker?
+
+---
+
+### With Docker, only 2 new files
+
+- `Dockerfile`
+
+```
+FROM python:latest
+RUN cd /app
+```
+
+- `docker-compose.yml`
+
+```
+build: .
+volumes:
+  - .:/app
+ports:
+  - "5000:5000"
+```
