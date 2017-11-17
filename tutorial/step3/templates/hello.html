@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User-Agent counter @ Capitole du Libre</title>
+</head>
+<body>
+<h1>User-Agent counter @ Capitole du Libre</h1>
+
+<p>Your User-Agent is: {{user_agent}}</p>
+
+<h3>Platforms</h3>
+<ul>
+  {% for (platform, count) in platforms.iteritems() %}
+    <li>{{platform}}: {{count}}</li>
+  {% endfor %}
+</ul>
+
+<h3>Browsers</h3>
+<ul>
+  {% for (browser, count) in browsers.iteritems() %}
+    <li>{{browser}}: {{count}}</li>
+  {% endfor %}
+</ul>
+
+</body>
+</html>

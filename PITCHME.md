@@ -63,9 +63,11 @@ To keep it simple:
 
 ---
 
-## Let's start an app
+## Step 1: Let's start an app
 
 Let's make a simple Python [Flask](http://flask.pocoo.org) Hello World app.
+
+Why? Simply because python is popular and easy to read. But this tutorial could work with **any unix-compliant technology**.
 
 How would you do that without docker?
 
@@ -76,17 +78,18 @@ How would you do that without docker?
 - `Dockerfile`
 
 ```
-FROM python:latest
+FROM ubuntu:latest
 ```
 
 - `docker-compose.yml`
 
 ```
-build: .
-volumes:
-  - .:/app
-ports:
-  - "5000:5000"
+app:
+  build: .
+  volumes:
+    - .:/app
+  ports:
+    - "5000:5000"
 ```
 
 Now type `docker-enter`...
@@ -123,9 +126,10 @@ def hello():
 app.run(host='0.0.0.0')
 ```
 
-And to setup in the terminal:
+And in the terminal we need to install [`pip`](https://www.rosehosting.com/blog/how-to-install-pip-on-ubuntu-16-04/) then `Flask`:
 
 ```
+apt-get update && apt-get install -y python-pip # no need sudo, we are root :)
 pip install Flask
 FLASK_APP=hello.py flask run
 ```
@@ -139,11 +143,11 @@ Go check [http://localhost:5000](http://localhost:5000) ;-)
 Let's have a deeper look at `docker-compose.yml`:
 
 ```
-build: .
+build: . # When doing `docker-compose build`, uses the `Dockerfile` in working directory
 volumes:
-  - .:/app
+  - .:/app # Shares your machine working directory with docker's `/app`
 ports:
-  - "5000:5000"
+  - "5000:5000" # Shares your machine 5000 port with docker's 5000
 ```
 
 And `Dockerfile`:
@@ -153,3 +157,60 @@ FROM python:latest
 ```
 
 And `docker-enter` = `docker-compose run --rm --service-ports app /bin/bash`
+
+---
+
+### Saving changes
+
+If I `exit` docker, and then `docker-enter` again to restart my server, I get:
+
+```
+root@d774482d9d98:/# FLASK_APP=hello.py flask run
+bash: flask: command not found
+```
+
+That's because docker saves thing only during the `build` operation. All the rest is disposable.
+
+To achieve this, edit your `Dockerfile`
+
+```
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y python-pip
+RUN pip install Flask
+RUN cd /app
+```
+
+And run `docker-compose build`. Now you can retry `docker-enter`.
+
+---
+
+### `docker-compose.yml` pimped
+
+`docker-compose` is a utility to store `docker` parameters in a separated file: `docker-compose.yml`.
+
+Eg. The above command docker equivalent would be
+
+`docker run -it -p 5000:5000 -v /home/augustin/Workspace/docker-local-tutorial/tutorial:/app ubuntu:latest bash`
+
+There are many possible entries in a `docker-compose.yml` file. Now let's add the most interesting: `command`:
+
+```
+app:
+  build: .
+  command: flask run
+  volumes:
+    - .:/app
+  ports:
+    - "5000:5000"
+  environment:
+    FLASK_APP: hello.py
+```
+
+And now type `docker-compose up`. :-)
+
+## Persistent database
+
+Now you'll want to have a database system connected, right?
+
+How do you do?
+
