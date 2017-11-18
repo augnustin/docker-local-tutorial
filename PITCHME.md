@@ -14,7 +14,7 @@ To attend this workshop, you need to have installed:
 
 - [Docker](https://docs.docker.com/engine/installation/)
 - [Docker-compose](https://github.com/docker/compose/releases)
-- 3 Aliases:
+- 3 Aliases
 
 ```
 alias docker-enter="docker-compose run --rm --service-ports app /bin/bash"
