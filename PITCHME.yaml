@@ -1,4 +1,4 @@
 theme : beige
-highlight : monokai
+highlight : zenburn
 theme-override : pitchme/css/theme-override.css
 

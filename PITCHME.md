@@ -16,7 +16,7 @@ To attend this workshop, you need to have installed:
 - [Docker-compose](https://github.com/docker/compose/releases)
 - 3 Aliases
 
-```bash
+```
 alias docker-enter="docker-compose run --rm --service-ports app /bin/bash"
 alias docker-enter-again="docker-compose run --rm app /bin/bash"
 alias docker-clean="docker ps -a | grep 'Exited\|Created' | cut -d ' ' -f 1 | xargs docker rm"
@@ -65,6 +65,8 @@ Over simplification:
 ## Let's start an app
 
 Let's make a simple Python [Flask](http://flask.pocoo.org) app.
+
+![Flask Logo](pitchme/images/flask.png)
 
 Why Python? Simply because it is popular and easy to read.
 
