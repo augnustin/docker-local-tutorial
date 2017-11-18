@@ -356,5 +356,5 @@ Nothing's perfect
 - Think functional/disposable, do not save state, but sequence of steps
 - Install a dev environment in a single command: `docker-compose build`
 - Wide repository of pre-built images, some can be a pain to create (eg. selenium)
+- Will help you in production :-)
 
-At some point you may want to use Docker in production, you will already know the commands!

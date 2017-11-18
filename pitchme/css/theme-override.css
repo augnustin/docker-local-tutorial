@@ -4,12 +4,3 @@
 */
 
 .reveal section:first-child img { border: none; box-shadow: none; margin: 0; vertical-align: middle; } .reveal section:nth-child(5) img { height: 30vh; } .reveal section:nth-child(7) img { height: 15vh; border: none; margin: 0; } code { background: #272822; color: #ddd; }
-
-
-code:not(.hljs) {
-  background: #272822;
-  color: #ddd;
-  padding: 0.2em;
-  font-size: 0.8em;
-}
-
