@@ -2,7 +2,7 @@
 
 Workshop by [Augustin Riedinger](https://augustin-riedinger.fr)
 
-![Twitter](pitchme/images/twitter.png): [@auGNUstin](https://twitter.com/Augnustin)
+![Twitter](pitchme/images/twitter.png) [@auGNUstin](https://twitter.com/Augnustin)
 
 At [Capitole du Libre](https://2017.capitoledulibre.org) 19th November 2017
 
@@ -10,11 +10,11 @@ At [Capitole du Libre](https://2017.capitoledulibre.org) 19th November 2017
 
 ## Prerequisite
 
-To attend this workshop, you need to have the following installed:
+To attend this workshop, you need to have installed:
 
 - [Docker](https://docs.docker.com/engine/installation/)
 - [Docker-compose](https://github.com/docker/compose/releases)
-- Aliases (we'll detail them later):
+- 3 Aliases (we'll detail them later):
 
 ```
 alias docker-enter="docker-compose run --rm --service-ports app /bin/bash"
@@ -204,12 +204,13 @@ There are many possible entries in a `docker-compose.yml` file. Now let's pimp o
 ```
 app:
   build: .
-  command: flask run
+  command: flask run # allow docker-compose up
+  working_dir: /app
   volumes:
     - .:/app
   ports:
     - "5000:5000"
-  environment:
+  environment: # Define as many environment variables as you want
     FLASK_APP: hello.py
 ```
 
@@ -316,7 +317,7 @@ Starting step3_db_1 ... done
 ERROR: Cannot start service app: driver failed programming external connectivity on endpoint step3_app_run_2 (f0de78fe8cc341374ba1759c7cdb9e4d09ca7274bd3a5f41f11481b063917de5): Bind for 0.0.0.0:5000 failed: port is already allocated
 ```
 
-So you need `docker-enter-again`!
+So you need `docker-enter-again`
 
 ---
 
@@ -329,7 +330,17 @@ Sometimes you won't exit your containers correctly. To check that, type `docker 
 ...
 ```
 
-To remove them, type `docker-clean`.
+To remove those, type `docker-clean`.
+
+---
+
+## Issues
+
+Nothing's perfect
+
+- node_module issue
+- change owner of generated files
+- memory usage
 
 ---
 
@@ -337,5 +348,7 @@ To remove them, type `docker-clean`.
 
 - Very good for isolation
 - Think functional/disposable, do not save state, but sequence of steps
-- Install a dev environment in 1 single command: `docker-compose build`
+- Install a dev environment in a single command: `docker-compose build`
+- Wide repository of pre-built images, some can be a pain to create (eg. selenium)
 
+At some point you may want to use Docker in production, you will already know the commands!
