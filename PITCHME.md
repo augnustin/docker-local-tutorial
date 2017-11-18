@@ -304,6 +304,8 @@ db:
     - ./data:/data/db
 ```
 
+---
+
 ## Multiple instances
 
 Try typing `docker-enter` in another terminal:
@@ -316,6 +318,8 @@ ERROR: Cannot start service app: driver failed programming external connectivity
 
 So you need `docker-enter-again`!
 
+---
+
 ## Clean after yourself
 
 Sometimes you won't exist your containers correctly. To check that, type `docker ps -a`.
@@ -325,6 +329,8 @@ Sometimes you won't exist your containers correctly. To check that, type `docker
 ```
 
 To remove them, type `docker-clean`.
+
+---
 
 ## Conclusion & Perspectives
 
