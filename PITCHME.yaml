@@ -1,5 +1,4 @@
 theme : beige
-logo : pitchme/images/logo.png
 highlight : monokai
 theme-override : /css/theme-override.css
 

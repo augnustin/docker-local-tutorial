@@ -289,3 +289,46 @@ app.config.update(
 
 ### Persist the data
 
+Despite containers being disposable, you might want to persist your DB data. How to do that?
+
+```
+mkdir data # Or whatever location that makes sense to you
+```
+
+Add a volume to the `db` container in the `docker-compose.yml`:
+
+```
+db:
+  image: redis
+  volumes:
+    - ./data:/data/db
+```
+
+## Multiple instances
+
+Try typing `docker-enter` in another terminal:
+
+```
+$ docker-enter
+Starting step3_db_1 ... done
+ERROR: Cannot start service app: driver failed programming external connectivity on endpoint step3_app_run_2 (f0de78fe8cc341374ba1759c7cdb9e4d09ca7274bd3a5f41f11481b063917de5): Bind for 0.0.0.0:5000 failed: port is already allocated
+```
+
+So you need `docker-enter-again`!
+
+## Clean after yourself
+
+Sometimes you won't exist your containers correctly. To check that, type `docker ps -a`.
+
+```
+6a6773464f28        30c2f2ec5c2f        "/bin/sh -c 'cd /app'"   36 hours ago        Exited (2) 36 hours ago                             elegant_thompson
+```
+
+To remove them, type `docker-clean`.
+
+## Conclusion & Perspectives
+
+- Very good for isolation
+- Think functional/disposable, do not save state, but sequence of steps
+- Install a dev environment in 1 single command: `docker-compose build`
+
