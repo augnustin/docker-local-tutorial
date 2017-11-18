@@ -14,7 +14,7 @@ To attend this workshop, you need to have installed:
 
 - [Docker](https://docs.docker.com/engine/installation/)
 - [Docker-compose](https://github.com/docker/compose/releases)
-- 3 Aliases (we'll detail them later):
+- 3 Aliases:
 
 ```
 alias docker-enter="docker-compose run --rm --service-ports app /bin/bash"
@@ -57,8 +57,8 @@ Most of the time, you will work on `project X` which requires Ruby 2+, Rails 5.1
 
 Over simplification:
 
-+ reuses the OS core functionnalities
-+ but isolates from other applications
++ reuses the host core functions (lib, clock, network etc.)
++ but isolates process from other applications
 
 ---
 
@@ -66,9 +66,11 @@ Over simplification:
 
 Let's make a simple Python [Flask](http://flask.pocoo.org) app.
 
-Why Python? Simply because it is popular and easy to read. **This tutorial could work with any unix-compliant technology**.
+Why Python? Simply because it is popular and easy to read.
 
-How would you achieve this without docker?
+**This tutorial remains valid with any unix-compliant technology**.
+
+Q: How would you achieve this without docker?
 
 ---
 
@@ -104,7 +106,6 @@ What do you want to do?
 - `whoami`
 - `pwd`
 - `ls`
-- `cd app`
 - `ping gnu.io`
 - etc.
 
