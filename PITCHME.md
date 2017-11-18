@@ -231,7 +231,7 @@ How do you do?
 ### The Docker way
 
 1. One container per dependency never more
-2. Use DockerHub, the Github of Docker Images
+2. Use [DockerHub](https://hub.docker.com/), the Github of Docker Images
 
 ---
 
@@ -260,15 +260,12 @@ And `docker-enter`...
 
 ### Where is my DB??
 
-Your container is linked to a DB one. How do you know? Environment variables!
+Your container is linked to a DB one. How do you know? **Environment variables!**
 
 ```
 root@6bceb2f600f6:/app# printenv
 STEP3_DB_1_PORT_6379_TCP_PROTO=tcp
 HOSTNAME=6bceb2f600f6
-DB_NAME=/step3_app_run_1/db
-DB_PORT_6379_TCP_PORT=6379
-TERM=xterm
 DB_PORT=tcp://172.17.0.3:6379
 ...
 DB_1_PORT_6379_TCP=tcp://172.17.0.3:6379
@@ -322,10 +319,11 @@ So you need `docker-enter-again`!
 
 ## Clean after yourself
 
-Sometimes you won't exist your containers correctly. To check that, type `docker ps -a`.
+Sometimes you won't exit your containers correctly. To check that, type `docker ps -a`.
 
 ```
 6a6773464f28        30c2f2ec5c2f        "/bin/sh -c 'cd /app'"   36 hours ago        Exited (2) 36 hours ago                             elegant_thompson
+...
 ```
 
 To remove them, type `docker-clean`.
