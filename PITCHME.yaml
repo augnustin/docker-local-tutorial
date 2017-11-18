@@ -1,4 +1,4 @@
 theme : beige
 highlight : monokai
-theme-override : /css/theme-override.css
+theme-override : pitchme/css/theme-override.css
 
