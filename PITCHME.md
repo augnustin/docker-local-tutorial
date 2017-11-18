@@ -214,3 +214,58 @@ Now you'll want to have a database system connected, right?
 
 How do you do?
 
+[Install Redis in your container](https://www.google.com/search?q=install+redis+ubuntu) ??
+
+### The Docker way
+
+1. One container per dependency never more
+2. Use DockerHub, the Github of Docker Images
+
+### New `docker-compose.yml`
+
+```
+app:
+  build: .
+  command: flask run
+  volumes:
+    - .:/app
+  working_dir: /app
+  ports:
+    - "5000:5000"
+  environment:
+    FLASK_APP: hello.py
+  links:
+    - db
+db:
+  image: redis
+```
+
+And `docker-enter`...
+
+### Where is my DB??
+
+Your container is linked to a DB one. How do you know? Environment variables!
+
+```
+root@6bceb2f600f6:/app# printenv
+STEP3_DB_1_PORT_6379_TCP_PROTO=tcp
+HOSTNAME=6bceb2f600f6
+DB_NAME=/step3_app_run_1/db
+DB_PORT_6379_TCP_PORT=6379
+TERM=xterm
+DB_PORT=tcp://172.17.0.3:6379
+...
+DB_1_PORT_6379_TCP=tcp://172.17.0.3:6379
+DB_1_ENV_GOSU_VERSION=1.10
+_=/usr/bin/printenv
+```
+
+### Use it!
+
+```
+app.config.update(
+  # DB_1_PORT_6379_TCP=tcp://172.17.0.3:6379
+  REDIS_URL=os.environ['DB_1_PORT_6379_TCP'].replace('tcp://', 'redis://')
+)
+```
+
