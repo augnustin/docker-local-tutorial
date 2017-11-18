@@ -1,7 +1,8 @@
 # Use Docker for your local environment
 
 Workshop by [Augustin Riedinger](https://augustin-riedinger.fr)
-(![Twitter](pitchme/images/twitter.png): [@auGNUstin](https://twitter.com/Augnustin))
+
+![Twitter](pitchme/images/twitter.png): [@auGNUstin](https://twitter.com/Augnustin)
 
 At [Capitole du Libre](https://2017.capitoledulibre.org) 19th November 2017
 
@@ -25,7 +26,7 @@ alias docker-clean="docker ps -a | grep 'Exited\|Created' | cut -d ' ' -f 1 | xa
 
 ## Motivations
 
-Are you working on a single code base **for your entire life**?
+Are you working on a **single code base for your entire life**?
 
 If so, you are **free to go**. :-)
 
@@ -33,7 +34,7 @@ Most of the time, you will work on `project X` which requires Ruby 2+, Rails 5.1
 
 ---
 
-## Solutions
+## Alternatives
 
 #### RVM, NVM, GVM tools?
 
@@ -46,17 +47,15 @@ Most of the time, you will work on `project X` which requires Ruby 2+, Rails 5.1
 
 - heavy in resources **AND** memory
 
-Now we have **DOCKER**!!
+> Now we have **DOCKER**
 
 ---
 
 ## What is Docker?
 
-You've probably heard of it. It's fashion now!
-
 ![Docker vs VM](pitchme/images/docker-vs-vm.png)
 
-To keep it simple:
+Over simplification:
 
 + reuses the OS core functionnalities
 + but isolates from other applications
@@ -65,15 +64,15 @@ To keep it simple:
 
 ## Let's start an app
 
-Let's make a simple Python [Flask](http://flask.pocoo.org) Hello World app.
+Let's make a simple Python [Flask](http://flask.pocoo.org) app.
 
-Why Python? Only because it is popular and easy to read. But **this tutorial could work with any unix-compliant technology**.
+Why Python? Simply because it is popular and easy to read. **This tutorial could work with any unix-compliant technology**.
 
-How would you do that without docker?
+How would you achieve this without docker?
 
 ---
 
-### With Docker, we need 2 extra files
+### Two extra files
 
 - `Dockerfile`
 
@@ -111,7 +110,7 @@ What do you want to do?
 
 ---
 
-### Back to our app
+### Back to App
 
 Flask's [getting started](http://flask.pocoo.org) tells us to create `hello.py`:
 
@@ -230,8 +229,12 @@ How do you do?
 
 ### The Docker way
 
-1. One container per dependency never more
+Two rules of thumbs:
+
+1. **One container per dependency** never more
 2. Use [DockerHub](https://hub.docker.com/), the Github of Docker Images
+
+Connect the containers thanks to `docker-compose`
 
 ---
 
