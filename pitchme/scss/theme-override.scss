@@ -6,7 +6,7 @@
     vertical-align: middle;
   }
 
-  &:nth-child(4) img {
+  &:nth-child(5) img {
     height: 30vh;
   }
   &:nth-child(7) img {
@@ -16,8 +16,10 @@
   }
 }
 
-code {
+code:not(.hljs) {
   background: #272822;
   color: #ddd;
+  padding: 0.2em;
+  font-size: 0.8em;
 }
 

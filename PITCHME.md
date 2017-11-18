@@ -16,7 +16,7 @@ To attend this workshop, you need to have installed:
 - [Docker-compose](https://github.com/docker/compose/releases)
 - 3 Aliases
 
-```
+```bash
 alias docker-enter="docker-compose run --rm --service-ports app /bin/bash"
 alias docker-enter-again="docker-compose run --rm app /bin/bash"
 alias docker-clean="docker ps -a | grep 'Exited\|Created' | cut -d ' ' -f 1 | xargs docker rm"
@@ -84,7 +84,7 @@ FROM ubuntu:latest
 
 - `docker-compose.yml`
 
-```
+```yaml
 app:
   build: .
   volumes:
@@ -113,7 +113,7 @@ What do you want to do?
 
 ### Back to App
 
-Flask's [getting started](http://flask.pocoo.org) tells us to create `hello.py`:
+From Flask's [getting started](http://flask.pocoo.org), first create `hello.py`:
 
 ```python
 from flask import Flask
@@ -126,9 +126,9 @@ def hello():
 app.run(host='0.0.0.0')
 ```
 
-And we need to install 2 dependencies in the terminal: [`pip`](https://www.rosehosting.com/blog/how-to-install-pip-on-ubuntu-16-04/) and `Flask`:
+Then install in the terminal [`pip`](https://www.rosehosting.com/blog/how-to-install-pip-on-ubuntu-16-04/) and `Flask`:
 
-```
+```bash
 apt-get update && apt-get install -y python-pip # no need sudo, we are root :)
 pip install Flask
 FLASK_APP=hello.py flask run
@@ -142,7 +142,7 @@ Go check [http://localhost:5000](http://localhost:5000) ;-)
 
 Let's have a deeper look at `docker-compose.yml`:
 
-```
+```yaml
 app:
   build: . # When doing `docker-compose build`, uses the `Dockerfile` in working directory
   volumes:
@@ -165,12 +165,14 @@ And `docker-enter` = `docker-compose run --rm --service-ports app /bin/bash`
 
 If I `exit` docker, and then `docker-enter` again to restart my server, I get:
 
-```
+```bash
 root@d774482d9d98:/# FLASK_APP=hello.py flask run
 bash: flask: command not found
 ```
 
 That's because docker saves thing only during the `build` operation. All the rest is disposable.
+
+---
 
 ### `Dockerfile`
 
@@ -202,7 +204,7 @@ And it could be worse!
 
 There are many possible entries in a `docker-compose.yml` file. Now let's pimp our file:
 
-```
+```yaml
 app:
   build: .
   command: flask run # allow docker-compose up
@@ -223,26 +225,25 @@ And now type `docker-compose up`. :-)
 
 Now you'll want to have a database system connected, right?
 
-How do you do?
+Q: What do you suggest?
 
-[Install Redis in your container](https://www.google.com/search?q=install+redis+ubuntu) ??
+Install Redis in your app container?
 
 ---
 
 ### The Docker way
 
-Two rules of thumbs:
+Rules of thumbs:
 
-1. **One container per dependency** never more
+1. **One container per task** never more
 2. Use [DockerHub](https://hub.docker.com/), the Github of Docker Images
-
-Connect the containers thanks to `docker-compose`
+3. Connect the containers thanks to `docker-compose`
 
 ---
 
-### New `docker-compose.yml`
+### Linked containers
 
-```
+```yaml
 app:
   build: .
   command: flask run
@@ -265,22 +266,26 @@ And `docker-enter`...
 
 ### Where is my DB??
 
-Your container is linked to a DB one. How do you know? **Environment variables!**
+Your container is linked to the redis one. How do you know? **Environment variables!**
 
-```
+```bash
 root@6bceb2f600f6:/app# printenv
-STEP3_DB_1_PORT_6379_TCP_PROTO=tcp
 HOSTNAME=6bceb2f600f6
-DB_PORT=tcp://172.17.0.3:6379
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/app
 ...
 DB_1_PORT_6379_TCP=tcp://172.17.0.3:6379
 DB_1_ENV_GOSU_VERSION=1.10
 _=/usr/bin/printenv
 ```
 
+---
+
 ### Use it!
 
-```
+Edit `hello.py`
+
+```python
 app.config.update(
   # DB_1_PORT_6379_TCP=tcp://172.17.0.3:6379
   REDIS_URL=os.environ['DB_1_PORT_6379_TCP'].replace('tcp://', 'redis://')
@@ -293,13 +298,13 @@ app.config.update(
 
 Despite containers being disposable, you might want to persist your DB data. How to do that?
 
-```
+```bash
 mkdir data # Or whatever location that makes sense to you
 ```
 
 Add a volume to the `db` container in the `docker-compose.yml`:
 
-```
+```yaml
 db:
   image: redis
   volumes:
@@ -312,7 +317,7 @@ db:
 
 Try typing `docker-enter` in another terminal:
 
-```
+```bash
 $ docker-enter
 Starting step3_db_1 ... done
 ERROR: Cannot start service app: driver failed programming external connectivity on endpoint step3_app_run_2 (f0de78fe8cc341374ba1759c7cdb9e4d09ca7274bd3a5f41f11481b063917de5): Bind for 0.0.0.0:5000 failed: port is already allocated
@@ -326,7 +331,7 @@ So you need `docker-enter-again`
 
 Sometimes you won't exit your containers correctly. To check that, type `docker ps -a`.
 
-```
+```bash
 6a6773464f28        30c2f2ec5c2f        "/bin/sh -c 'cd /app'"   36 hours ago        Exited (2) 36 hours ago                             elegant_thompson
 ...
 ```
