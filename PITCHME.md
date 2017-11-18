@@ -1,7 +1,7 @@
 # Use Docker for your local environment
 
 Workshop by [Augustin Riedinger](https://augustin-riedinger.fr)
-(![Twitter](pitchme/images/twitter.png): [@augnustin](https://twitter.com/Augnustin))
+(![Twitter](pitchme/images/twitter.png): [@auGNUstin](https://twitter.com/Augnustin))
 
 At [Capitole du Libre](https://2017.capitoledulibre.org) 19th November 2017
 
@@ -38,11 +38,11 @@ Most of the time, you will work on `project X` which requires Ruby 2+, Rails 5.1
 #### RVM, NVM, GVM tools?
 
 - adds complexities
-- doesn't exist for every technology (eg. Postgres, Mongo)
+- doesn't exist for every technology (eg. Databases)
 - local environment takes longer to setup
 - messes your machine
 
-#### Virtualbox, Vagrant?
+#### Virtualbox/Vagrant?
 
 - heavy in resources **AND** memory
 
@@ -63,17 +63,17 @@ To keep it simple:
 
 ---
 
-## Step 1: Let's start an app
+## Let's start an app
 
 Let's make a simple Python [Flask](http://flask.pocoo.org) Hello World app.
 
-Why? Simply because python is popular and easy to read. But this tutorial could work with **any unix-compliant technology**.
+Why Python? Only because it is popular and easy to read. But **this tutorial could work with any unix-compliant technology**.
 
 How would you do that without docker?
 
 ---
 
-### With Docker, 2 extra files
+### With Docker, we need 2 extra files
 
 - `Dockerfile`
 
@@ -113,7 +113,7 @@ What do you want to do?
 
 ### Back to our app
 
-Flask's [getting started](http://flask.pocoo.org) says to create `hello.py`:
+Flask's [getting started](http://flask.pocoo.org) tells us to create `hello.py`:
 
 ```python
 from flask import Flask
@@ -126,7 +126,7 @@ def hello():
 app.run(host='0.0.0.0')
 ```
 
-And in the terminal we need to install [`pip`](https://www.rosehosting.com/blog/how-to-install-pip-on-ubuntu-16-04/) then `Flask`:
+And we need to install 2 dependencies in the terminal: [`pip`](https://www.rosehosting.com/blog/how-to-install-pip-on-ubuntu-16-04/) and `Flask`:
 
 ```
 apt-get update && apt-get install -y python-pip # no need sudo, we are root :)
@@ -143,17 +143,18 @@ Go check [http://localhost:5000](http://localhost:5000) ;-)
 Let's have a deeper look at `docker-compose.yml`:
 
 ```
-build: . # When doing `docker-compose build`, uses the `Dockerfile` in working directory
-volumes:
-  - .:/app # Shares your machine working directory with docker's `/app`
-ports:
-  - "5000:5000" # Shares your machine 5000 port with docker's 5000
+app:
+  build: . # When doing `docker-compose build`, uses the `Dockerfile` in working directory
+  volumes:
+    - .:/app # Shares your machine working directory with docker's `/app`
+  ports:
+    - "5000:5000" # Shares your machine 5000 port with docker's 5000
 ```
 
 And `Dockerfile`:
 
 ```
-FROM python:latest
+FROM ubuntu:latest
 ```
 
 And `docker-enter` = `docker-compose run --rm --service-ports app /bin/bash`
@@ -171,20 +172,21 @@ bash: flask: command not found
 
 That's because docker saves thing only during the `build` operation. All the rest is disposable.
 
-To achieve this, edit your `Dockerfile`
+### `Dockerfile`
+
+To achieve this, you will have to store all the steps in your `Dockerfile`.
 
 ```
 FROM ubuntu:latest
 RUN apt-get update && apt-get install -y python-pip
 RUN pip install Flask
-RUN cd /app
 ```
 
 And run `docker-compose build`. Now you can retry `docker-enter`.
 
 ---
 
-### `docker-compose.yml` pimped
+### About `docker-compose`
 
 `docker-compose` is a utility to store `docker` parameters in a separated file: `docker-compose.yml`.
 
@@ -192,7 +194,13 @@ Eg. The above command docker equivalent would be
 
 `docker run -it -p 5000:5000 -v /home/augustin/Workspace/docker-local-tutorial/tutorial:/app ubuntu:latest bash`
 
-There are many possible entries in a `docker-compose.yml` file. Now let's add the most interesting: `command`:
+And it could be worse!
+
+---
+
+### `docker-compose.yml` pimped
+
+There are many possible entries in a `docker-compose.yml` file. Now let's pimp our file:
 
 ```
 app:
@@ -208,6 +216,8 @@ app:
 
 And now type `docker-compose up`. :-)
 
+---
+
 ## Persistent database
 
 Now you'll want to have a database system connected, right?
@@ -216,10 +226,14 @@ How do you do?
 
 [Install Redis in your container](https://www.google.com/search?q=install+redis+ubuntu) ??
 
+---
+
 ### The Docker way
 
 1. One container per dependency never more
 2. Use DockerHub, the Github of Docker Images
+
+---
 
 ### New `docker-compose.yml`
 
@@ -241,6 +255,8 @@ db:
 ```
 
 And `docker-enter`...
+
+---
 
 ### Where is my DB??
 
@@ -268,4 +284,8 @@ app.config.update(
   REDIS_URL=os.environ['DB_1_PORT_6379_TCP'].replace('tcp://', 'redis://')
 )
 ```
+
+---
+
+### Persist the data
 
