@@ -27,7 +27,6 @@ alias docker-clean="docker ps -a | grep 'Exited\|Created' | cut -d ' ' -f 1 | xa
 ## Motivations
 
 Are you working on a **single code base for your entire life**?
-
 If so, you are **free to go**. :-)
 
 ![Dependencies Struggle](pitchme/images/dependencies-struggle.png)
