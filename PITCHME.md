@@ -350,17 +350,23 @@ To remove those, type `docker-clean`.
 
 Nothing's perfect
 
-- [node_module issue](https://stackoverflow.com/questions/36245831/accessing-node-modules-after-npm-install-inside-docker)
+- [node_module issue](https://stackoverflow.com/questions/30043872/docker-compose-node-modules-not-present-in-a-volume-after-npm-install-succeeds)
 - change owner of generated files
 - memory usage
 
 ---
 
-## Conclusion & Perspectives
+## Conclusions
 
 - Very good for isolation
 - Think functional/disposable, do not save state, but sequence of steps
 - Install a dev environment in a single command: `docker-compose build`
 - Wide repository of pre-built images, some can be a pain to create (eg. selenium)
-- Will help you in production :-)
+- **Will help you in production** :-)
 
+---
+
+## Going further
+
+- [The original article](https://augustin-riedinger.fr/en/resources/using-docker-as-a-development-environment-part-1/)
+- Chaine Youtube [Quoi d'neuf Docker?](https://www.youtube.com/c/Quoideneufdocker)
