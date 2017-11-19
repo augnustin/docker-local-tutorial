@@ -4,3 +4,4 @@ Workshop for [Capitole du Libre 2017](https://2017.capitoledulibre.org) by [Augu
 
 **[Get the slides](https://gitpitch.com/augnustin/docker-local-slides)**
 
+This presentation uses the material produced for a blog article:

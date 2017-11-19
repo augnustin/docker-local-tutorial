@@ -6,7 +6,7 @@ Workshop by [Augustin Riedinger](https://augustin-riedinger.fr)
 
 ![Twitter](pitchme/images/twitter.png) [@augnustin](https://twitter.com/Augnustin)
 
-Get it at: https://gitpitch.com/augnustin/docker-local-tutorial
+Get it at: https://gitpitch.com/augnustin/docker-local-tutorial ([source](https://github.com/augnustin/docker-local-tutorial))
 
 ---
 
