@@ -1,7 +1,6 @@
-body {
- font-size: 80%;
+.reveal {
+ font-size: 200%;
 }
-
 .reveal blockquote {
  background-color: rgba(0, 0, 0, 0.2);
 }
