@@ -144,18 +144,18 @@ Go check [http://localhost:5000](http://localhost:5000) ;-)
 
 ### How it works?
 
-Let's have a deeper look at `docker-compose.yml`:
+Let's have a closer look at `docker-compose.yml`:
 
 ```yaml
 app:
-  build: . # When doing `docker-compose build`, uses the `Dockerfile` in working directory
+  build: .
   volumes:
-    - .:/app # Shares your machine working directory with docker's `/app`
+    - .:/app
   ports:
-    - "5000:5000" # Shares your machine 5000 port with docker's 5000
+    - "5000:5000"
 ```
 
-And `Dockerfile`:
+`Dockerfile`:
 
 ```
 FROM ubuntu:latest
@@ -174,13 +174,13 @@ root@d774482d9d98:/# FLASK_APP=hello.py flask run
 bash: flask: command not found
 ```
 
-That's because docker saves thing only during the `build` operation. All the rest is disposable.
+That's because docker saves container changes only during the `build` operation. All the rest is disposable.
 
 ---
 
 ### `Dockerfile`
 
-To achieve this, you will have to store all the steps in your `Dockerfile`.
+To achieve this, all the steps must be in your `Dockerfile`.
 
 ```
 FROM ubuntu:latest
@@ -196,7 +196,7 @@ And run `docker-compose build`. Now you can retry `docker-enter`.
 
 `docker-compose` is a utility to store `docker` parameters in a separated file: `docker-compose.yml`.
 
-Eg. The above command docker equivalent would be
+Eg. Without it, the `docker-enter` command would look like:
 
 `docker run -it -p 5000:5000 -v /home/augustin/Workspace/docker-local-tutorial/tutorial:/app ubuntu:latest bash`
 
@@ -204,14 +204,14 @@ And it could be worse!
 
 ---
 
-### `docker-compose.yml` pimped
+### Let's pimp it!
 
-There are many possible entries in a `docker-compose.yml` file. Now let's pimp our file:
+There are many possible entries in a `docker-compose.yml` file. Here are few new entries:
 
 ```yaml
 app:
   build: .
-  command: flask run # allow docker-compose up
+  command: flask run # allows docker-compose up
   working_dir: /app
   volumes:
     - .:/app
@@ -227,7 +227,7 @@ And now type `docker-compose up`. :-)
 
 ## Persistent database
 
-Now you'll want to have a database system connected, right?
+Now you'll want to have a database system connected, right? Say you need redis...
 
 Q: What do you suggest?
 
@@ -242,6 +242,8 @@ Rules of thumbs:
 1. **One container per task** never more
 2. Use [DockerHub](https://hub.docker.com/), the Github of Docker Images
 3. Connect the containers thanks to `docker-compose`
+
+![Docker Hub Registry](pitchme/images/docker-hub.svg)
 
 ---
 
