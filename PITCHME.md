@@ -30,7 +30,9 @@ Are you working on a **single code base for your entire life**?
 
 If so, you are **free to go**. :-)
 
-Most of the time, you will work on `project X` which requires Ruby 2+, Rails 5.1, Node 8+ and PostgreSQL 8.1 along with `project Y` which doesn't work without Node 10 and PostgreSQL 9.3 and sometimes get back on your 3.2 Ruby-on-Rails `Z project`.
+![Dependencies Struggle](pitchme/images/dependencies-struggle.png)
+
+But most of the time it's more like that, right?
 
 ---
 
