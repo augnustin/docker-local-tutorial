@@ -73,7 +73,7 @@ Why Python? Simply because it is popular and easy to read. Flask is a lightweigh
 
 **This tutorial remains valid with any unix-compliant technology**.
 
-Q: How would you achieve this without docker?
+*Q: How would you achieve this without docker?*
 
 ---
 
@@ -228,9 +228,11 @@ And now type `docker-compose up` :-)
 
 Now you'll want to have a database system connected, right? Say you need redis...
 
-Q: What do you suggest?
+![Redis](pitchme/images/redis.png)
 
-Install Redis in your app container?
+*Q: What do you suggest?*
+
+*Install Redis in your app container?*
 
 ---
 
@@ -242,7 +244,7 @@ Rules of thumbs:
 2. Use [DockerHub](https://hub.docker.com/), the Github of Docker Images
 3. Connect the containers thanks to `docker-compose`
 
-![Docker Hub Registry](pitchme/images/docker-hub.svg)
+![Docker Hub Registry](pitchme/images/dockerhub.png)
 
 ---
 
