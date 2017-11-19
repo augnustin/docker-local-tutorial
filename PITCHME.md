@@ -314,7 +314,7 @@ Add a volume to the `db` container in the `docker-compose.yml`:
 db:
   image: redis
   volumes:
-    - ./data:/data/db
+    - ./data:/var/lib/redis/dump.rdb
 ```
 
 ---
@@ -350,7 +350,7 @@ To remove those, type `docker-clean`.
 
 Nothing's perfect
 
-- node_module issue
+- [node_module issue](https://stackoverflow.com/questions/36245831/accessing-node-modules-after-npm-install-inside-docker)
 - change owner of generated files
 - memory usage
 
