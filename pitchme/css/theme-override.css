@@ -20,6 +20,9 @@
  border: none;
  margin: 0;
 }
+.reveal .slide-number {
+ font-size: 20px !important;
+}
 
 code:not(.hljs) {
  background: #3f3f3f;
