@@ -55,7 +55,7 @@ But most of the time it's more like that, right?
 
 ## What is Docker?
 
-![Docker vs VM](pitchme/images/docker-vs-vm.png)
+[![Docker vs VM](pitchme/images/docker-vs-vm.png)](https://stackoverflow.com/a/26719860/1620081)
 
 Over simplification:
 
