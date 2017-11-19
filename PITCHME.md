@@ -1,8 +1,10 @@
+[Capitole du Libre](https://2017.capitoledulibre.org) 19th November 2017
+
 # Use Docker for your local environment
 
-Workshop by [Augustin Riedinger](https://augustin-riedinger.fr) - ![Twitter](pitchme/images/twitter.png) [@augnustin](https://twitter.com/Augnustin)
+Workshop by [Augustin Riedinger](https://augustin-riedinger.fr)
 
-At [Capitole du Libre](https://2017.capitoledulibre.org) 19th November 2017
+![Twitter](pitchme/images/twitter.png) [@augnustin](https://twitter.com/Augnustin)
 
 Get it at: https://gitpitch.com/augnustin/docker-local-tutorial
 
