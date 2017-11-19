@@ -1,7 +1,11 @@
 .reveal section {
-  &:first-child img {
+  img {
     border: none;
     box-shadow: none;
+  }
+
+
+  &:first-child img {
     margin: 0;
     vertical-align: middle;
   }

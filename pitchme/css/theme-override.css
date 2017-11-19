@@ -1,6 +1,8 @@
-.reveal section:first-child img {
+.reveal section img {
  border: none;
  box-shadow: none;
+}
+.reveal section:first-child img {
  margin: 0;
  vertical-align: middle;
 }
