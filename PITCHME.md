@@ -2,9 +2,11 @@
 
 Workshop by [Augustin Riedinger](https://augustin-riedinger.fr)
 
-![Twitter](pitchme/images/twitter.png) [@auGNUstin](https://twitter.com/Augnustin)
+![Twitter](pitchme/images/twitter.png) [@augnustin](https://twitter.com/Augnustin)
 
 At [Capitole du Libre](https://2017.capitoledulibre.org) 19th November 2017
+
+Get it at: https://gitpitch.com/augnustin/docker-local-tutorial
 
 ---
 
@@ -14,7 +16,7 @@ To attend this workshop, you need to have installed:
 
 - [Docker](https://docs.docker.com/engine/installation/)
 - [Docker-compose](https://github.com/docker/compose/releases)
-- 3 Aliases
+- 3 Aliases:
 
 ```
 alias docker-enter="docker-compose run --rm --service-ports app /bin/bash"
@@ -64,13 +66,13 @@ Over simplification:
 
 ---
 
-## Let's start an app
+## Let's start a web app
 
 Let's make a simple Python [Flask](http://flask.pocoo.org) app.
 
 ![Flask Logo](pitchme/images/flask.png)
 
-Why Python? Simply because it is popular and easy to read.
+Why Python? Simply because it is popular and easy to read. Flask is a lightweight web server.
 
 **This tutorial remains valid with any unix-compliant technology**.
 
@@ -221,7 +223,7 @@ app:
     FLASK_APP: hello.py
 ```
 
-And now type `docker-compose up`. :-)
+And now type `docker-compose up` :-)
 
 ---
 
