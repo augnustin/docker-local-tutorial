@@ -1,4 +1,5 @@
 theme : beige
 highlight : zenburn
 theme-override : pitchme/css/theme-override.css
+published : true
 
