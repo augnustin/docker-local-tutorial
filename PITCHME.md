@@ -109,7 +109,7 @@ What do you want to do?
 - `whoami`
 - `pwd`
 - `ls`
-- `ping gnu.io`
+- `cd /app`
 - etc.
 
 ---
@@ -371,3 +371,4 @@ Nothing's perfect
 
 - [The original article](https://augustin-riedinger.fr/en/resources/using-docker-as-a-development-environment-part-1/)
 - Chaine Youtube [Quoi d'neuf Docker?](https://www.youtube.com/c/Quoideneufdocker)
+- [Awesome Docker](https://github.com/veggiemonk/awesome-docker)
